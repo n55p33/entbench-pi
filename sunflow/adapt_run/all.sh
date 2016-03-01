@@ -15,6 +15,8 @@ runs=(
   ld.sh
 )
 
+export PANDA_RUNS=11
+
 for rn in ${runs[@]}; do
   echo "Starting ${rn}"
   $(./$rn $1 > /dev/null)  
