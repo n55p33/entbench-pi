@@ -1,10 +1,9 @@
 #!/bin/bash
 
-if [ ! -f ./src/adapt ]; then
-  echo "current source is not adapt"
+if [ ! -f ./src/badapt ]; then
+  echo "current source is not badapt"
   exit
 fi
 
-./bak.sh
-rm -rf ./adapt
-cp -rf ./src ./adapt
+rm -rf ./badapt
+cp -rf ./src ./badapt

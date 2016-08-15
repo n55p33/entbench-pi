@@ -17,7 +17,7 @@ import javax.crypto.Cipher;
 import crypto.Util;
 import io.Context;
 
-import jrapl.EnergyCheckUtils;
+import java.util.Date;
 
 modes {low <: mid; mid <: high; };
 
@@ -28,10 +28,8 @@ public class Main {
       ENT_Util.initModeFile();
       int PANDA_RUNS = Integer.parseInt(System.getenv("PANDA_RUNS"));
 
-      double[] energyRuns = new double[11];
-
       for (int k = 0; k < PANDA_RUNS; k++) {
-        double[] before = EnergyCheckUtils.getEnergyStats();
+				long startStamp = (new Date()).getTime()/1000;
 
         RSA@mode<?> rsadyn = new RSA@mode<?>();
         RSA@mode<*> rsa = snapshot rsadyn ?mode[@mode<low>,@mode<high>];
@@ -48,16 +46,19 @@ public class Main {
           rsa.runMultiEncryptDecrypt("RSA/ECB/PKCS1Padding", Util.TEST_DATA_6);
         }
 
-        double[] after = EnergyCheckUtils.getEnergyStats();
-        ENT_Util.writeModeFile(String.format("ERun %d: %f %f %f\n", k, after[0]-before[0], after[1]-before[1], after[2]-before[2]));
-        energyRuns[k] = after[2]-before[2];
-      }
+			  long endStamp = (new Date()).getTime()/1000;
 
-      double energyTotal = 0.0;
-      for (int k = 1; k < PANDA_RUNS; k++) {
-        energyTotal += energyRuns[k];
-      }
-      ENT_Util.writeModeFile(String.format("Energy: %f %f %f\n", 0.0, 0.0, (energyTotal / 10.0)));
+				ENT_Util.writeModeFile(String.format("ERun %d: %d %d\n", k, startStamp, endStamp));
+
+				try {
+					Thread.sleep(30000);
+				} catch (Exception e) {
+					System.err.println(e);
+				}
+
+			}
+
+      ENT_Util.closeModeFile();
     }
     
     public void setupBenchmark() {

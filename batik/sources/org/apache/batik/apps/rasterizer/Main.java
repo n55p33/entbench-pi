@@ -34,7 +34,9 @@ import org.apache.batik.parser.ClockParser;
 import org.apache.batik.parser.ParseException;
 import org.apache.batik.util.ApplicationSecurityEnforcer;
 
-import jrapl.EnergyCheckUtils;
+import java.util.Date;
+
+//import jrapl.EnergyCheckUtils;
 
 /**
  * Handles command line parameters to configure the <tt>SVGConverter</tt>
@@ -996,20 +998,23 @@ public class Main implements SVGConverterController {
         double energyTotal = 0.0;
         for (int k = 0; k < PANDA_RUNS; k++) {
 
-          double[] before = EnergyCheckUtils.getEnergyStats();
-          ENT_Util.resetStopwatch();
-          ENT_Util.startStopwatch();
+					long startStamp = (new Date()).getTime()/1000;
 
           (new Main(args)).execute();
 
-          //PANDA_Util.stopStopwatch();
-          double[] after = EnergyCheckUtils.getEnergyStats();
-          ENT_Util.stopStopwatch();
-          ENT_Util.writeModeFile(String.format("ERun %d: %f %f %f %f\n", k, after[0]-before[0], after[1]-before[1], after[2]-before[2], ENT_Util.elapsedTime()));
+					long endStamp = (new Date()).getTime()/1000;
+
+					ENT_Util.writeModeFile(String.format("ERun %d: %d %d\n", k, startStamp, endStamp));
+
+					try {
+						Thread.sleep(30000);
+					} catch (Exception e) {
+						System.err.println(e);
+					}
+
         }
 
         ENT_Util.closeModeFile();
-        EnergyCheckUtils.DeallocProfile();
 
         System.exit(0);
     }

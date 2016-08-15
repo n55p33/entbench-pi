@@ -17,7 +17,7 @@ import javax.crypto.Cipher;
 import crypto.Util;
 import io.Context;
 
-import jrapl.EnergyCheckUtils;
+import java.util.Date;
 
 modes {low <: mid; mid <: high; };
 
@@ -29,53 +29,50 @@ public class Main {
       int PANDA_RUNS = Integer.parseInt(System.getenv("PANDA_RUNS"));
 
       for (int k = 0; k < PANDA_RUNS; k++) {
-        double[] before = EnergyCheckUtils.getEnergyStats();
-        ENT_Util.resetStopwatch();
-        ENT_Util.startStopwatch();
+				long startStamp = (new Date()).getTime()/1000;
 
         RSA@mode<?> rsadyn = new RSA@mode<?>();
         RSA@mode<*> rsa = snapshot rsadyn ?mode[@mode<low>,@mode<high>];
         rsa.init(); 
 
-        if (choice == 0) {
+				if (choice == 0) {
           //rsa.runSingleEncryptDecrypt("RSA/ECB/PKCS1Padding", Util.TEST_DATA_4);
-          rsa.runMultiEncryptDecrypt("RSA/ECB/PKCS1Padding", Util.TEST_DATA_4);
+          rsa.runMultiEncryptDecrypt("RSA/ECB/PKCS1Padding", Util.TEST_SMALL);
         } else if (choice == 1) {
           //rsa.runSingleEncryptDecrypt("RSA/ECB/PKCS1Padding", Util.TEST_DATA_5);
-          rsa.runMultiEncryptDecrypt("RSA/ECB/PKCS1Padding", Util.TEST_DATA_5);
+          rsa.runMultiEncryptDecrypt("RSA/ECB/PKCS1Padding", Util.TEST_MEDIUM);
         } else {
           //rsa.runSingleEncryptDecrypt("RSA/ECB/PKCS1Padding", Util.TEST_DATA_6);
-          rsa.runMultiEncryptDecrypt("RSA/ECB/PKCS1Padding", Util.TEST_DATA_6);
-        }
+          rsa.runMultiEncryptDecrypt("RSA/ECB/PKCS1Padding", Util.TEST_LARGE);
+        } 
+        
+			  long endStamp = (new Date()).getTime()/1000;
 
-        double[] after = EnergyCheckUtils.getEnergyStats();
+				ENT_Util.writeModeFile(String.format("ERun %d: %d %d\n", k, startStamp, endStamp));
 
-        double diff = after[2]-before[2];
+				try {
+					Thread.sleep(30000);
+				} catch (Exception e) {
+					System.err.println(e);
+				}
 
-        if (diff < 0) {
-          diff += EnergyCheckUtils.wraparoundValue;
-        }
-
-        ENT_Util.stopStopwatch();
-
-        ENT_Util.writeModeFile(String.format("ERun %d: %f %f %f %f\n", k, after[0]-before[0], after[1]-before[1], diff, ENT_Util.elapsedTime()));
-      }
+			}
 
       ENT_Util.closeModeFile();
-      EnergyCheckUtils.DeallocProfile();
     }
     
     public void setupBenchmark() {
       choice = Integer.parseInt(System.getenv("ENT_SIZE"));
 
       try {
-        if (choice == 0) {
-          Context.fileCache.loadFile(Util.TEST_DATA_4);
+				if (choice == 0) {
+          Context.fileCache.loadFile(Util.TEST_SMALL);
         } else if (choice == 1) {
-          Context.fileCache.loadFile(Util.TEST_DATA_5);
+          Context.fileCache.loadFile(Util.TEST_MEDIUM);
         } else {
-          Context.fileCache.loadFile(Util.TEST_DATA_6);
-        }
+          Context.fileCache.loadFile(Util.TEST_LARGE);
+        } 
+
       } catch (Exception e) {
         throw new RuntimeException("Error in setup of crypto.aes." + e);
       }

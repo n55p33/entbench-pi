@@ -1,0 +1,549 @@
+#
+# There is insufficient memory for the Java Runtime Environment to continue.
+# Native memory allocation (mmap) failed to map 166227968 bytes for committing reserved memory.
+# Possible reasons:
+#   The system is out of physical RAM or swap space
+#   In 32 bit mode, the process size limit was hit
+# Possible solutions:
+#   Reduce memory load on the system
+#   Increase physical memory or swap space
+#   Check if swap backing store is full
+#   Use 64 bit Java on a 64 bit OS
+#   Decrease Java heap size (-Xmx/-Xms)
+#   Decrease number of Java threads
+#   Decrease Java thread stack sizes (-Xss)
+#   Set larger code cache with -XX:ReservedCodeCacheSize=
+# This output file may be truncated or incomplete.
+#
+#  Out of Memory Error (os_linux.cpp:2627), pid=2069, tid=862147680
+#
+# JRE version: Java(TM) SE Runtime Environment (8.0_65-b17) (build 1.8.0_65-b17)
+# Java VM: Java HotSpot(TM) Client VM (25.65-b01 mixed mode linux-arm )
+# Failed to write core dump. Core dumps have been disabled. To enable core dumping, try "ulimit -c unlimited" before starting Java again
+#
+
+---------------  T H R E A D  ---------------
+
+Current thread (0x7615e400):  VMThread [stack: 0x335b6000,0x33636000] [id=2071]
+
+Stack: [0x335b6000,0x33636000]
+VM_Operation (0x7632f1b4): GenCollectForAllocation, mode: safepoint, requested by thread 0x76107c00
+
+
+---------------  P R O C E S S  ---------------
+
+Java Threads: ( => current thread )
+  0x76184400 JavaThread "Service Thread" daemon [_thread_blocked, id=2076, stack(0x32e30000,0x32e80000)]
+  0x76181000 JavaThread "C1 CompilerThread0" daemon [_thread_blocked, id=2075, stack(0x32e80000,0x32f00000)]
+  0x7617f800 JavaThread "Signal Dispatcher" daemon [_thread_blocked, id=2074, stack(0x33027000,0x33077000)]
+  0x76162c00 JavaThread "Finalizer" daemon [_thread_blocked, id=2073, stack(0x33516000,0x33566000)]
+  0x76161400 JavaThread "Reference Handler" daemon [_thread_blocked, id=2072, stack(0x33566000,0x335b6000)]
+  0x76107c00 JavaThread "main" [_thread_blocked, id=2070, stack(0x762e1000,0x76331000)]
+
+Other Threads:
+=>0x7615e400 VMThread [stack: 0x335b6000,0x33636000] [id=2071]
+  0x76186400 WatcherThread [stack: 0x32c80000,0x32d00000] [id=2077]
+
+VM state:at safepoint (normal execution)
+
+VM Mutex/Monitor currently owned by a thread:  ([mutex/lock_event])
+[0x761056e8] Threads_lock - owner thread: 0x7615e400
+[0x76105af8] Heap_lock - owner thread: 0x76107c00
+
+Heap:
+ def new generation   total 241536K, used 0K [0x34000000, 0x44600000, 0x49540000)
+  eden space 214784K,   0% used [0x34000000, 0x34000000, 0x411c0000)
+  from space 26752K,   0% used [0x42be0000, 0x42be0000, 0x44600000)
+  to   space 26752K,   0% used [0x411c0000, 0x411c0000, 0x42be0000)
+ tenured generation   total 536804K, used 482314K [0x49540000, 0x6a179000, 0x74000000)
+   the space 536804K,  89% used [0x49540000, 0x66c42a88, 0x66c42c00, 0x6a179000)
+ Metaspace       used 6646K, capacity 6713K, committed 6808K, reserved 7472K
+
+Card table byte_map: [0x33dff000,0x34000000] byte_map_base: 0x33c5f000
+
+Polling page: 0x76f9c000
+
+CodeCache: size=32768Kb used=3692Kb max_used=4641Kb free=29075Kb
+ bounds [0x740e1000, 0x74599000, 0x760e1000]
+ total_blobs=1822 nmethods=1670 adapters=80
+ compilation: enabled
+
+Compilation events (10 events):
+Event: 2046.083 Thread 0x76181000 21954             polyglot.frontend.Job::setRunningPass (55 bytes)
+Event: 2046.086 Thread 0x76181000 nmethod 21954 0x74418fc8 code [0x744190d0, 0x74419278]
+Event: 2046.092 Thread 0x76181000 21955             polyglot.frontend.Job::compiler (10 bytes)
+Event: 2046.094 Thread 0x76181000 nmethod 21955 0x74418d88 code [0x74418e70, 0x74418f28]
+Event: 2046.100 Thread 0x76181000 21956             sun.nio.cs.UTF_8$Encoder::encode (359 bytes)
+Event: 2046.105 Thread 0x76181000 nmethod 21956 0x741dae48 code [0x741daf70, 0x741db3e0]
+Event: 2046.107 Thread 0x76181000 21957             java.util.TreeMap::keySet (5 bytes)
+Event: 2046.108 Thread 0x76181000 nmethod 21957 0x743be208 code [0x743be2f0, 0x743be3f8]
+Event: 2046.164 Thread 0x76181000 21958             polyglot.ast.Field_c::target (5 bytes)
+Event: 2046.165 Thread 0x76181000 nmethod 21958 0x7426d048 code [0x7426d120, 0x7426d1a8]
+
+GC Heap History (10 events):
+Event: 1988.514 GC heap after
+Heap after GC invocations=410 (full 10):
+ def new generation   total 241536K, used 15112K [0x34000000, 0x44600000, 0x49540000)
+  eden space 214784K,   0% used [0x34000000, 0x34000000, 0x411c0000)
+  from space 26752K,  56% used [0x411c0000, 0x42082128, 0x42be0000)
+  to   space 26752K,   0% used [0x42be0000, 0x42be0000, 0x44600000)
+ tenured generation   total 536548K, used 526969K [0x49540000, 0x6a139000, 0x74000000)
+   the space 536548K,  98% used [0x49540000, 0x697de420, 0x697de600, 0x6a139000)
+ Metaspace       used 6646K, capacity 6713K, committed 6808K, reserved 7472K
+}
+Event: 2006.707 GC heap before
+{Heap before GC invocations=410 (full 10):
+ def new generation   total 241536K, used 229896K [0x34000000, 0x44600000, 0x49540000)
+  eden space 214784K, 100% used [0x34000000, 0x411c0000, 0x411c0000)
+  from space 26752K,  56% used [0x411c0000, 0x42082128, 0x42be0000)
+  to   space 26752K,   0% used [0x42be0000, 0x42be0000, 0x44600000)
+ tenured generation   total 536548K, used 526969K [0x49540000, 0x6a139000, 0x74000000)
+   the space 536548K,  98% used [0x49540000, 0x697de420, 0x697de600, 0x6a139000)
+ Metaspace       used 6646K, capacity 6713K, committed 6808K, reserved 7472K
+Event: 2007.673 GC heap after
+Heap after GC invocations=411 (full 10):
+ def new generation   total 241536K, used 13789K [0x34000000, 0x44600000, 0x49540000)
+  eden space 214784K,   0% used [0x34000000, 0x34000000, 0x411c0000)
+  from space 26752K,  51% used [0x42be0000, 0x43957778, 0x44600000)
+  to   space 26752K,   0% used [0x411c0000, 0x411c0000, 0x42be0000)
+ tenured generation   total 536548K, used 530279K [0x49540000, 0x6a139000, 0x74000000)
+   the space 536548K,  98% used [0x49540000, 0x69b19e60, 0x69b1a000, 0x6a139000)
+ Metaspace       used 6646K, capacity 6713K, committed 6808K, reserved 7472K
+}
+Event: 2023.232 GC heap before
+{Heap before GC invocations=411 (full 10):
+ def new generation   total 241536K, used 228573K [0x34000000, 0x44600000, 0x49540000)
+  eden space 214784K, 100% used [0x34000000, 0x411c0000, 0x411c0000)
+  from space 26752K,  51% used [0x42be0000, 0x43957778, 0x44600000)
+  to   space 26752K,   0% used [0x411c0000, 0x411c0000, 0x42be0000)
+ tenured generation   total 536548K, used 530279K [0x49540000, 0x6a139000, 0x74000000)
+   the space 536548K,  98% used [0x49540000, 0x69b19e60, 0x69b1a000, 0x6a139000)
+ Metaspace       used 6646K, capacity 6713K, committed 6808K, reserved 7472K
+Event: 2023.615 GC heap after
+Heap after GC invocations=412 (full 10):
+ def new generation   total 241536K, used 13552K [0x34000000, 0x44600000, 0x49540000)
+  eden space 214784K,   0% used [0x34000000, 0x34000000, 0x411c0000)
+  from space 26752K,  50% used [0x411c0000, 0x41efc3f8, 0x42be0000)
+  to   space 26752K,   0% used [0x42be0000, 0x42be0000, 0x44600000)
+ tenured generation   total 536548K, used 532377K [0x49540000, 0x6a139000, 0x74000000)
+   the space 536548K,  99% used [0x49540000, 0x69d26498, 0x69d26600, 0x6a139000)
+ Metaspace       used 6646K, capacity 6713K, committed 6808K, reserved 7472K
+}
+Event: 2030.695 GC heap before
+{Heap before GC invocations=412 (full 10):
+ def new generation   total 241536K, used 228336K [0x34000000, 0x44600000, 0x49540000)
+  eden space 214784K, 100% used [0x34000000, 0x411c0000, 0x411c0000)
+  from space 26752K,  50% used [0x411c0000, 0x41efc3f8, 0x42be0000)
+  to   space 26752K,   0% used [0x42be0000, 0x42be0000, 0x44600000)
+ tenured generation   total 536548K, used 532377K [0x49540000, 0x6a139000, 0x74000000)
+   the space 536548K,  99% used [0x49540000, 0x69d26498, 0x69d26600, 0x6a139000)
+ Metaspace       used 6646K, capacity 6713K, committed 6808K, reserved 7472K
+Event: 2031.127 GC heap after
+Heap after GC invocations=413 (full 10):
+ def new generation   total 241536K, used 12694K [0x34000000, 0x44600000, 0x49540000)
+  eden space 214784K,   0% used [0x34000000, 0x34000000, 0x411c0000)
+  from space 26752K,  47% used [0x42be0000, 0x438459a0, 0x44600000)
+  to   space 26752K,   0% used [0x411c0000, 0x411c0000, 0x42be0000)
+ tenured generation   total 536548K, used 534381K [0x49540000, 0x6a139000, 0x74000000)
+   the space 536548K,  99% used [0x49540000, 0x69f1b610, 0x69f1b800, 0x6a139000)
+ Metaspace       used 6646K, capacity 6713K, committed 6808K, reserved 7472K
+}
+Event: 2038.231 GC heap before
+{Heap before GC invocations=413 (full 10):
+ def new generation   total 241536K, used 227478K [0x34000000, 0x44600000, 0x49540000)
+  eden space 214784K, 100% used [0x34000000, 0x411c0000, 0x411c0000)
+  from space 26752K,  47% used [0x42be0000, 0x438459a0, 0x44600000)
+  to   space 26752K,   0% used [0x411c0000, 0x411c0000, 0x42be0000)
+ tenured generation   total 536548K, used 534381K [0x49540000, 0x6a139000, 0x74000000)
+   the space 536548K,  99% used [0x49540000, 0x69f1b610, 0x69f1b800, 0x6a139000)
+ Metaspace       used 6646K, capacity 6713K, committed 6808K, reserved 7472K
+Event: 2038.590 GC heap after
+Heap after GC invocations=414 (full 10):
+ def new generation   total 241536K, used 13592K [0x34000000, 0x44600000, 0x49540000)
+  eden space 214784K,   0% used [0x34000000, 0x34000000, 0x411c0000)
+  from space 26752K,  50% used [0x411c0000, 0x41f063c8, 0x42be0000)
+  to   space 26752K,   0% used [0x42be0000, 0x42be0000, 0x44600000)
+ tenured generation   total 536548K, used 534381K [0x49540000, 0x6a139000, 0x74000000)
+   the space 536548K,  99% used [0x49540000, 0x69f1b610, 0x69f1b800, 0x6a139000)
+ Metaspace       used 6646K, capacity 6713K, committed 6808K, reserved 7472K
+}
+Event: 2046.202 GC heap before
+{Heap before GC invocations=414 (full 10):
+ def new generation   total 241536K, used 228376K [0x34000000, 0x44600000, 0x49540000)
+  eden space 214784K, 100% used [0x34000000, 0x411c0000, 0x411c0000)
+  from space 26752K,  50% used [0x411c0000, 0x41f063c8, 0x42be0000)
+  to   space 26752K,   0% used [0x42be0000, 0x42be0000, 0x44600000)
+ tenured generation   total 536548K, used 534381K [0x49540000, 0x6a139000, 0x74000000)
+   the space 536548K,  99% used [0x49540000, 0x69f1b610, 0x69f1b800, 0x6a139000)
+ Metaspace       used 6646K, capacity 6713K, committed 6808K, reserved 7472K
+
+Deoptimization events (0 events):
+No events
+
+Internal exceptions (10 events):
+Event: 178.641 Thread 0x76107c00 Exception <a 'java/lang/NoSuchMethodError': <clinit>> (0x348eb398) thrown at [/HUDSON/workspace/8-2-build-glinux-arm-vfp-hflt/jdk8u65/4987/hotspot/src/share/vm/prims/jni.cpp, line 1591]
+Event: 178.647 Thread 0x76107c00 Exception <a 'java/lang/NoSuchMethodError': <clinit>> (0x348f8d68) thrown at [/HUDSON/workspace/8-2-build-glinux-arm-vfp-hflt/jdk8u65/4987/hotspot/src/share/vm/prims/jni.cpp, line 1591]
+Event: 178.658 Thread 0x76107c00 Exception <a 'java/lang/NoSuchMethodError': <clinit>> (0x34914978) thrown at [/HUDSON/workspace/8-2-build-glinux-arm-vfp-hflt/jdk8u65/4987/hotspot/src/share/vm/prims/jni.cpp, line 1591]
+Event: 269.193 Thread 0x76107c00 Exception <a 'java/lang/NoSuchMethodError': <clinit>> (0x37f648a0) thrown at [/HUDSON/workspace/8-2-build-glinux-arm-vfp-hflt/jdk8u65/4987/hotspot/src/share/vm/prims/jni.cpp, line 1591]
+Event: 843.314 Thread 0x76107c00 Exception <a 'java/lang/NoSuchMethodError': <clinit>> (0x39684dc0) thrown at [/HUDSON/workspace/8-2-build-glinux-arm-vfp-hflt/jdk8u65/4987/hotspot/src/share/vm/prims/jni.cpp, line 1591]
+Event: 1165.517 Thread 0x76107c00 Exception <a 'java/lang/NoSuchMethodError': <clinit>> (0x3a73f9d0) thrown at [/HUDSON/workspace/8-2-build-glinux-arm-vfp-hflt/jdk8u65/4987/hotspot/src/share/vm/prims/jni.cpp, line 1591]
+Event: 1165.528 Thread 0x76107c00 Exception <a 'java/lang/NoSuchMethodError': <clinit>> (0x3a74b830) thrown at [/HUDSON/workspace/8-2-build-glinux-arm-vfp-hflt/jdk8u65/4987/hotspot/src/share/vm/prims/jni.cpp, line 1591]
+Event: 1169.324 Thread 0x76107c00 Exception <a 'java/lang/NoSuchMethodError': <clinit>> (0x34672708) thrown at [/HUDSON/workspace/8-2-build-glinux-arm-vfp-hflt/jdk8u65/4987/hotspot/src/share/vm/prims/jni.cpp, line 1591]
+Event: 1370.904 Thread 0x76107c00 Exception <a 'java/io/FileNotFoundException'> (0x372cbbd8) thrown at [/HUDSON/workspace/8-2-build-glinux-arm-vfp-hflt/jdk8u65/4987/hotspot/src/share/vm/prims/jni.cpp, line 709]
+Event: 1370.905 Thread 0x76107c00 Exception <a 'java/io/FileNotFoundException'> (0x372cd0a8) thrown at [/HUDSON/workspace/8-2-build-glinux-arm-vfp-hflt/jdk8u65/4987/hotspot/src/share/vm/prims/jni.cpp, line 709]
+
+Events (10 events):
+Event: 2046.074 Thread 0x76181000 flushing nmethod 0x741a8108
+Event: 2046.074 Thread 0x76181000 flushing nmethod 0x741bcb88
+Event: 2046.079 Thread 0x76181000 flushing nmethod 0x7426d048
+Event: 2046.080 Thread 0x76181000 flushing nmethod 0x742b1148
+Event: 2046.081 Thread 0x76181000 flushing nmethod 0x742cb908
+Event: 2046.082 Thread 0x76181000 flushing nmethod 0x74306808
+Event: 2046.088 Thread 0x76181000 flushing nmethod 0x7440aac8
+Event: 2046.088 Thread 0x76181000 flushing nmethod 0x74415f08
+Event: 2046.089 Thread 0x76181000 flushing nmethod 0x74448548
+Event: 2046.202 Executing VM operation: GenCollectForAllocation
+
+
+Dynamic libraries:
+00008000-00009000 r-xp 00000000 b3:02 137041     /usr/lib/jvm/jdk-8-oracle-arm32-vfp-hflt/jre/bin/java
+00010000-00011000 rw-p 00000000 b3:02 137041     /usr/lib/jvm/jdk-8-oracle-arm32-vfp-hflt/jre/bin/java
+01913000-01934000 rw-p 00000000 00:00 0          [heap]
+31c00000-31c60000 rw-p 00000000 00:00 0 
+31c60000-31d00000 ---p 00000000 00:00 0 
+31d00000-31ed9000 rw-p 00000000 00:00 0 
+31ed9000-31f00000 ---p 00000000 00:00 0 
+31f00000-32000000 rw-p 00000000 00:00 0 
+32000000-32100000 rw-p 00000000 00:00 0 
+32100000-32200000 rw-p 00000000 00:00 0 
+32216000-32300000 r--s 015ed000 b3:02 44057      /home/pi/Projects/ent/lib/android.jar
+32300000-323b1000 rw-p 00000000 00:00 0 
+323b1000-32400000 ---p 00000000 00:00 0 
+32400000-324fa000 rw-p 00000000 00:00 0 
+324fa000-32500000 ---p 00000000 00:00 0 
+32500000-32600000 rw-p 00000000 00:00 0 
+32600000-326fe000 rw-p 00000000 00:00 0 
+326fe000-32700000 ---p 00000000 00:00 0 
+32700000-32800000 rw-p 00000000 00:00 0 
+32869000-32888000 r--s 001cf000 b3:02 44371      /usr/share/java/ant-1.9.4.jar
+32888000-32900000 r--s 010e3000 b3:02 137209     /usr/lib/jvm/jdk-8-oracle-arm32-vfp-hflt/lib/tools.jar
+32900000-32a00000 rw-p 00000000 00:00 0 
+32a0b000-32a10000 r--s 00083000 b3:02 137073     /usr/lib/jvm/jdk-8-oracle-arm32-vfp-hflt/jre/lib/jfr.jar
+32a10000-32a16000 r--s 002f8000 b3:02 137053     /usr/lib/jvm/jdk-8-oracle-arm32-vfp-hflt/jre/lib/charsets.jar
+32a16000-32b00000 r--s 015ed000 b3:02 44057      /home/pi/Projects/ent/lib/android.jar
+32b00000-32b21000 rw-p 00000000 00:00 0 
+32b21000-32c00000 ---p 00000000 00:00 0 
+32c02000-32c03000 r--p 00000000 b3:02 51627      /usr/share/locale/en_GB/LC_MESSAGES/libc.mo
+32c03000-32c06000 r--s 0001a000 b3:02 137071     /usr/lib/jvm/jdk-8-oracle-arm32-vfp-hflt/jre/lib/jce.jar
+32c06000-32c18000 r--s 00345000 b3:02 137082     /usr/lib/jvm/jdk-8-oracle-arm32-vfp-hflt/jre/lib/resources.jar
+32c18000-32c19000 r--s 00003000 b3:02 44616      /usr/share/java/ant-jdepend-1.9.4.jar
+32c19000-32c1a000 r--s 00002000 b3:02 44542      /usr/share/java/ant-commons-logging-1.9.4.jar
+32c1a000-32c1c000 r--s 0000a000 b3:02 44533      /usr/share/java/ant-jsch-1.9.4.jar
+32c1c000-32c1d000 r--s 00003000 b3:02 44515      /usr/share/java/ant-apache-bcel-1.9.4.jar
+32c1d000-32c1e000 r--s 00002000 b3:02 44514      /usr/share/java/ant-apache-bsf-1.9.4.jar
+32c1e000-32c21000 r--s 00014000 b3:02 44540      /usr/share/java/ant-commons-net-1.9.4.jar
+32c21000-32c22000 r--s 00002000 b3:02 44513      /usr/share/java/ant-apache-regexp-1.9.4.jar
+32c22000-32c24000 r--s 00001000 b3:02 44588      /usr/share/java/ant-apache-log4j-1.9.4.jar
+32c24000-32c26000 r--s 00002000 b3:02 44535      /usr/share/java/ant-jmf-1.9.4.jar
+32c26000-32c27000 r--s 00003000 b3:02 44541      /usr/share/java/ant-swing-1.9.4.jar
+32c27000-32c28000 r--s 00001000 b3:02 44589      /usr/share/java/ant-apache-xalan2-1.9.4.jar
+32c28000-32c2a000 r--s 0001b000 b3:02 44602      /usr/share/java/ant-junit-1.9.4.jar
+32c2a000-32c2b000 r--s 00002000 b3:02 44536      /usr/share/java/ant-apache-oro-1.9.4.jar
+32c2b000-32c2c000 r--s 00003000 b3:02 44601      /usr/share/java/ant-javamail-1.9.4.jar
+32c2c000-32c2e000 r--s 00004000 b3:02 44603      /usr/share/java/ant-testutil-1.9.4.jar
+32c2e000-32c30000 r--s 00002000 b3:02 44587      /usr/share/java/ant-junit4-1.9.4.jar
+32c30000-32c31000 r--s 00002000 b3:02 44617      /usr/share/java/ant-antlr-1.9.4.jar
+32c31000-32c32000 r--s 00002000 b3:02 44534      /usr/share/java/ant-apache-resolver-1.9.4.jar
+32c32000-32c33000 r--s 00004000 b3:02 44372      /usr/share/java/ant-launcher-1.9.4.jar
+32c33000-32c37000 r--s 0004d000 b3:02 44074      /home/pi/Projects/ent/lib/ent.jar
+32c37000-32c39000 r--s 0000f000 b3:02 43458      /home/pi/Projects/ent/lib/ppg.jar
+32c39000-32c3c000 r--s 00021000 b3:02 43452      /home/pi/Projects/ent/lib/java_cup.jar
+32c3c000-32c52000 r--s 001e7000 b3:02 43457      /home/pi/Projects/ent/lib/polyglot.jar
+32c52000-32c57000 r--s 00096000 b3:02 137074     /usr/lib/jvm/jdk-8-oracle-arm32-vfp-hflt/jre/lib/jsse.jar
+32c57000-32c58000 r--s 00003000 b3:02 44616      /usr/share/java/ant-jdepend-1.9.4.jar
+32c58000-32c59000 r--s 00002000 b3:02 44542      /usr/share/java/ant-commons-logging-1.9.4.jar
+32c59000-32c5b000 r--s 0000a000 b3:02 44533      /usr/share/java/ant-jsch-1.9.4.jar
+32c5b000-32c7a000 r--s 001cf000 b3:02 44371      /usr/share/java/ant-1.9.4.jar
+32c7a000-32c7b000 r--s 00003000 b3:02 44515      /usr/share/java/ant-apache-bcel-1.9.4.jar
+32c7b000-32c7c000 r--s 00002000 b3:02 44514      /usr/share/java/ant-apache-bsf-1.9.4.jar
+32c7c000-32c7f000 r--s 00014000 b3:02 44540      /usr/share/java/ant-commons-net-1.9.4.jar
+32c7f000-32c80000 r--s 00002000 b3:02 44513      /usr/share/java/ant-apache-regexp-1.9.4.jar
+32c80000-32c81000 ---p 00000000 00:00 0 
+32c81000-32d00000 rwxp 00000000 00:00 0          [stack:2077]
+32d00000-32e00000 rw-p 00000000 00:00 0 
+32e00000-32e02000 r--s 00001000 b3:02 44588      /usr/share/java/ant-apache-log4j-1.9.4.jar
+32e02000-32e04000 r--s 00002000 b3:02 44535      /usr/share/java/ant-jmf-1.9.4.jar
+32e04000-32e05000 r--s 00003000 b3:02 44541      /usr/share/java/ant-swing-1.9.4.jar
+32e05000-32e07000 r--s 0001b000 b3:02 44602      /usr/share/java/ant-junit-1.9.4.jar
+32e07000-32e30000 rw-p 00000000 00:00 0 
+32e30000-32e33000 ---p 00000000 00:00 0 
+32e33000-32e80000 rwxp 00000000 00:00 0          [stack:2076]
+32e80000-32e83000 ---p 00000000 00:00 0 
+32e83000-32f00000 rwxp 00000000 00:00 0          [stack:2075]
+32f00000-32f21000 rw-p 00000000 00:00 0 
+32f21000-33000000 ---p 00000000 00:00 0 
+33000000-33013000 r--s 000d2000 b3:02 272015     /home/pi/Projects/entbench/batik/lib/xerces_2_5_0.jar
+33013000-33027000 r--s 001a0000 b3:02 272028     /home/pi/Projects/entbench/batik/lib/xalan-2.6.0.jar
+33027000-3302a000 ---p 00000000 00:00 0 
+3302a000-33077000 rwxp 00000000 00:00 0          [stack:2074]
+33077000-33200000 r--p 00000000 b3:02 140779     /usr/lib/locale/locale-archive
+33200000-33221000 rw-p 00000000 00:00 0 
+33221000-33300000 ---p 00000000 00:00 0 
+33300000-33321000 rw-p 00000000 00:00 0 
+33321000-33400000 ---p 00000000 00:00 0 
+33400000-33455000 rw-p 00000000 00:00 0 
+33455000-33500000 ---p 00000000 00:00 0 
+33500000-33501000 r--s 00001000 b3:02 44589      /usr/share/java/ant-apache-xalan2-1.9.4.jar
+33501000-33503000 r--s 00004000 b3:02 44603      /usr/share/java/ant-testutil-1.9.4.jar
+33503000-3350b000 r--s 00028000 b3:02 272024     /home/pi/Projects/entbench/batik/lib/xml-apis.jar
+3350b000-33516000 r--s 000ad000 b3:02 272027     /home/pi/Projects/entbench/batik/lib/pdf-transcoder.jar
+33516000-33519000 ---p 00000000 00:00 0 
+33519000-33566000 rwxp 00000000 00:00 0          [stack:2073]
+33566000-33569000 ---p 00000000 00:00 0 
+33569000-335b6000 rwxp 00000000 00:00 0          [stack:2072]
+335b6000-335b7000 ---p 00000000 00:00 0 
+335b7000-33636000 rwxp 00000000 00:00 0          [stack:2071]
+33636000-33685000 rw-p 00000000 00:00 0 
+33685000-3385d000 r--s 03d20000 b3:02 137083     /usr/lib/jvm/jdk-8-oracle-arm32-vfp-hflt/jre/lib/rt.jar
+3385d000-33ca3000 rw-p 00000000 00:00 0 
+33ca3000-33ca9000 ---p 00000000 00:00 0 
+33ca9000-33db0000 rw-p 00000000 00:00 0 
+33db0000-33dff000 ---p 00000000 00:00 0 
+33dff000-33e82000 rw-p 00000000 00:00 0 
+33e82000-33ea9000 ---p 00000000 00:00 0 
+33ea9000-33fb0000 rw-p 00000000 00:00 0 
+33fb0000-33fff000 ---p 00000000 00:00 0 
+33fff000-44600000 rw-p 00000000 00:00 0 
+44600000-49540000 ---p 00000000 00:00 0 
+49540000-6a179000 rw-p 00000000 00:00 0 
+74000000-74001000 r--s 00002000 b3:02 44536      /usr/share/java/ant-apache-oro-1.9.4.jar
+74001000-74006000 r--s 00010000 b3:02 272002     /home/pi/Projects/entbench/batik/lib/xml-apis-ext.jar
+74006000-74074000 rw-p 00000000 00:00 0 
+74074000-740e1000 ---p 00000000 00:00 0 
+740e1000-74599000 rwxp 00000000 00:00 0 
+74599000-760e1000 ---p 00000000 00:00 0 
+760e1000-760f8000 r-xp 00000000 b3:02 137144     /usr/lib/jvm/jdk-8-oracle-arm32-vfp-hflt/jre/lib/arm/libzip.so
+760f8000-760ff000 ---p 00017000 b3:02 137144     /usr/lib/jvm/jdk-8-oracle-arm32-vfp-hflt/jre/lib/arm/libzip.so
+760ff000-76100000 rw-p 00016000 b3:02 137144     /usr/lib/jvm/jdk-8-oracle-arm32-vfp-hflt/jre/lib/arm/libzip.so
+76100000-76200000 rw-p 00000000 00:00 0 
+76200000-76201000 r--s 00003000 b3:02 44601      /usr/share/java/ant-javamail-1.9.4.jar
+76201000-76203000 r--s 00002000 b3:02 44587      /usr/share/java/ant-junit4-1.9.4.jar
+76203000-76204000 r--s 00002000 b3:02 44617      /usr/share/java/ant-antlr-1.9.4.jar
+76204000-7621a000 r--s 001e7000 b3:02 43457      /home/pi/Projects/ent/lib/polyglot.jar
+7621a000-76225000 r-xp 00000000 b3:02 3175       /lib/arm-linux-gnueabihf/libnss_files-2.19.so
+76225000-76234000 ---p 0000b000 b3:02 3175       /lib/arm-linux-gnueabihf/libnss_files-2.19.so
+76234000-76235000 r--p 0000a000 b3:02 3175       /lib/arm-linux-gnueabihf/libnss_files-2.19.so
+76235000-76236000 rw-p 0000b000 b3:02 3175       /lib/arm-linux-gnueabihf/libnss_files-2.19.so
+76236000-7623f000 r-xp 00000000 b3:02 3183       /lib/arm-linux-gnueabihf/libnss_nis-2.19.so
+7623f000-7624e000 ---p 00009000 b3:02 3183       /lib/arm-linux-gnueabihf/libnss_nis-2.19.so
+7624e000-7624f000 r--p 00008000 b3:02 3183       /lib/arm-linux-gnueabihf/libnss_nis-2.19.so
+7624f000-76250000 rw-p 00009000 b3:02 3183       /lib/arm-linux-gnueabihf/libnss_nis-2.19.so
+76250000-76261000 r-xp 00000000 b3:02 3172       /lib/arm-linux-gnueabihf/libnsl-2.19.so
+76261000-76270000 ---p 00011000 b3:02 3172       /lib/arm-linux-gnueabihf/libnsl-2.19.so
+76270000-76271000 r--p 00010000 b3:02 3172       /lib/arm-linux-gnueabihf/libnsl-2.19.so
+76271000-76272000 rw-p 00011000 b3:02 3172       /lib/arm-linux-gnueabihf/libnsl-2.19.so
+76272000-76274000 rw-p 00000000 00:00 0 
+76274000-7627b000 r-xp 00000000 b3:02 3173       /lib/arm-linux-gnueabihf/libnss_compat-2.19.so
+7627b000-7628a000 ---p 00007000 b3:02 3173       /lib/arm-linux-gnueabihf/libnss_compat-2.19.so
+7628a000-7628b000 r--p 00006000 b3:02 3173       /lib/arm-linux-gnueabihf/libnss_compat-2.19.so
+7628b000-7628c000 rw-p 00007000 b3:02 3173       /lib/arm-linux-gnueabihf/libnss_compat-2.19.so
+7628c000-7628d000 r--s 00002000 b3:02 44534      /usr/share/java/ant-apache-resolver-1.9.4.jar
+7628d000-76295000 r--s 00074000 b3:02 272020     /home/pi/Projects/entbench/batik/lib/js.jar
+76295000-76299000 r--s 0004d000 b3:02 44074      /home/pi/Projects/ent/lib/ent.jar
+76299000-7629b000 r--s 0000f000 b3:02 43458      /home/pi/Projects/ent/lib/ppg.jar
+7629b000-7629e000 r--s 00021000 b3:02 43452      /home/pi/Projects/ent/lib/java_cup.jar
+7629e000-762c1000 r-xp 00000000 b3:02 137119     /usr/lib/jvm/jdk-8-oracle-arm32-vfp-hflt/jre/lib/arm/libjava.so
+762c1000-762c9000 ---p 00023000 b3:02 137119     /usr/lib/jvm/jdk-8-oracle-arm32-vfp-hflt/jre/lib/arm/libjava.so
+762c9000-762ca000 rw-p 00023000 b3:02 137119     /usr/lib/jvm/jdk-8-oracle-arm32-vfp-hflt/jre/lib/arm/libjava.so
+762ca000-762d0000 r-xp 00000000 b3:02 3202       /lib/arm-linux-gnueabihf/librt-2.19.so
+762d0000-762df000 ---p 00006000 b3:02 3202       /lib/arm-linux-gnueabihf/librt-2.19.so
+762df000-762e0000 r--p 00005000 b3:02 3202       /lib/arm-linux-gnueabihf/librt-2.19.so
+762e0000-762e1000 rw-p 00006000 b3:02 3202       /lib/arm-linux-gnueabihf/librt-2.19.so
+762e1000-762e4000 ---p 00000000 00:00 0 
+762e4000-76331000 rwxp 00000000 00:00 0          [stack:2070]
+76331000-7639a000 r-xp 00000000 b3:02 3164       /lib/arm-linux-gnueabihf/libm-2.19.so
+7639a000-763aa000 ---p 00069000 b3:02 3164       /lib/arm-linux-gnueabihf/libm-2.19.so
+763aa000-763ab000 r--p 00069000 b3:02 3164       /lib/arm-linux-gnueabihf/libm-2.19.so
+763ab000-763ac000 rw-p 0006a000 b3:02 3164       /lib/arm-linux-gnueabihf/libm-2.19.so
+763ac000-7692f000 r-xp 00000000 b3:02 137146     /usr/lib/jvm/jdk-8-oracle-arm32-vfp-hflt/jre/lib/arm/client/libjvm.so
+7692f000-76937000 ---p 00583000 b3:02 137146     /usr/lib/jvm/jdk-8-oracle-arm32-vfp-hflt/jre/lib/arm/client/libjvm.so
+76937000-76963000 rw-p 00583000 b3:02 137146     /usr/lib/jvm/jdk-8-oracle-arm32-vfp-hflt/jre/lib/arm/client/libjvm.so
+76963000-76d86000 rw-p 00000000 00:00 0 
+76d86000-76da3000 r-xp 00000000 b3:02 3149       /lib/arm-linux-gnueabihf/libgcc_s.so.1
+76da3000-76db2000 ---p 0001d000 b3:02 3149       /lib/arm-linux-gnueabihf/libgcc_s.so.1
+76db2000-76db3000 rw-p 0001c000 b3:02 3149       /lib/arm-linux-gnueabihf/libgcc_s.so.1
+76db3000-76ede000 r-xp 00000000 b3:02 3134       /lib/arm-linux-gnueabihf/libc-2.19.so
+76ede000-76eee000 ---p 0012b000 b3:02 3134       /lib/arm-linux-gnueabihf/libc-2.19.so
+76eee000-76ef0000 r--p 0012b000 b3:02 3134       /lib/arm-linux-gnueabihf/libc-2.19.so
+76ef0000-76ef1000 rw-p 0012d000 b3:02 3134       /lib/arm-linux-gnueabihf/libc-2.19.so
+76ef1000-76ef4000 rw-p 00000000 00:00 0 
+76ef4000-76ef6000 r-xp 00000000 b3:02 3143       /lib/arm-linux-gnueabihf/libdl-2.19.so
+76ef6000-76f05000 ---p 00002000 b3:02 3143       /lib/arm-linux-gnueabihf/libdl-2.19.so
+76f05000-76f06000 r--p 00001000 b3:02 3143       /lib/arm-linux-gnueabihf/libdl-2.19.so
+76f06000-76f07000 rw-p 00002000 b3:02 3143       /lib/arm-linux-gnueabihf/libdl-2.19.so
+76f07000-76f1b000 r-xp 00000000 b3:02 137147     /usr/lib/jvm/jdk-8-oracle-arm32-vfp-hflt/jre/lib/arm/jli/libjli.so
+76f1b000-76f23000 ---p 00014000 b3:02 137147     /usr/lib/jvm/jdk-8-oracle-arm32-vfp-hflt/jre/lib/arm/jli/libjli.so
+76f23000-76f24000 rw-p 00014000 b3:02 137147     /usr/lib/jvm/jdk-8-oracle-arm32-vfp-hflt/jre/lib/arm/jli/libjli.so
+76f24000-76f38000 r-xp 00000000 b3:02 3199       /lib/arm-linux-gnueabihf/libpthread-2.19.so
+76f38000-76f48000 ---p 00014000 b3:02 3199       /lib/arm-linux-gnueabihf/libpthread-2.19.so
+76f48000-76f49000 r--p 00014000 b3:02 3199       /lib/arm-linux-gnueabihf/libpthread-2.19.so
+76f49000-76f4a000 rw-p 00015000 b3:02 3199       /lib/arm-linux-gnueabihf/libpthread-2.19.so
+76f4a000-76f4c000 rw-p 00000000 00:00 0 
+76f4c000-76f55000 r-xp 00000000 b3:02 137143     /usr/lib/jvm/jdk-8-oracle-arm32-vfp-hflt/jre/lib/arm/libverify.so
+76f55000-76f5d000 ---p 00009000 b3:02 137143     /usr/lib/jvm/jdk-8-oracle-arm32-vfp-hflt/jre/lib/arm/libverify.so
+76f5d000-76f5e000 rw-p 00009000 b3:02 137143     /usr/lib/jvm/jdk-8-oracle-arm32-vfp-hflt/jre/lib/arm/libverify.so
+76f5e000-76f63000 r-xp 00000000 b3:02 25010      /usr/lib/arm-linux-gnueabihf/libarmmem.so
+76f63000-76f72000 ---p 00005000 b3:02 25010      /usr/lib/arm-linux-gnueabihf/libarmmem.so
+76f72000-76f73000 rw-p 00004000 b3:02 25010      /usr/lib/arm-linux-gnueabihf/libarmmem.so
+76f73000-76f93000 r-xp 00000000 b3:02 3098       /lib/arm-linux-gnueabihf/ld-2.19.so
+76f93000-76f94000 r--s 00004000 b3:02 44372      /usr/share/java/ant-launcher-1.9.4.jar
+76f94000-76f9c000 rw-s 00000000 b3:02 256051     /tmp/hsperfdata_pi/2069
+76f9c000-76f9d000 ---p 00000000 00:00 0 
+76f9d000-76fa0000 rw-p 00000000 00:00 0 
+76fa0000-76fa2000 rw-p 00000000 00:00 0 
+76fa2000-76fa3000 r--p 0001f000 b3:02 3098       /lib/arm-linux-gnueabihf/ld-2.19.so
+76fa3000-76fa4000 rw-p 00020000 b3:02 3098       /lib/arm-linux-gnueabihf/ld-2.19.so
+7efcc000-7efed000 rwxp 00000000 00:00 0          [stack]
+7efed000-7efee000 rw-p 00000000 00:00 0 
+7eff4000-7eff5000 r-xp 00000000 00:00 0          [sigpage]
+7eff5000-7eff6000 r--p 00000000 00:00 0          [vvar]
+7eff6000-7eff7000 r-xp 00000000 00:00 0          [vdso]
+ffff0000-ffff1000 r-xp 00000000 00:00 0          [vectors]
+
+VM Arguments:
+jvm_args: -Xmx1024m 
+java_command: ent.Main -assert -simpleoutput -d /home/pi/Projects/entbench/batik/classes -sourcepath /home/pi/Projects/entbench/batik/sources:/home/pi/Projects/entbench/batik/sources-1.4 -morepermissivecasts -postopts -deprecation -encoding UTF-8 -g:none @/tmp/files7063498140149847980
+java_class_path (initial): :/home/pi/Projects/ent/bin/../compiler/classes:/home/pi/Projects/ent/bin/../runtime/classes:/home/pi/Projects/ent/bin/../lib/polyglot.jar:/home/pi/Projects/ent/bin/../lib/java_cup.jar:/home/pi/Projects/ent/bin/../lib/android.jar:/home/pi/Projects/ent/bin/../lib/ent.jar::/home/pi/Projects/entbench/batik/classes:/home/pi/Projects/entbench/batik/lib/js.jar:/home/pi/Projects/entbench/batik/lib/pdf-transcoder.jar:/home/pi/Projects/entbench/batik/lib/xalan-2.6.0.jar:/home/pi/Projects/entbench/batik/lib/xerces_2_5_0.jar:/home/pi/Projects/entbench/batik/lib/xml-apis-ext.jar:/home/pi/Projects/entbench/batik/lib/xml-apis.jar:/usr/share/ant/lib/ant-launcher.jar:/usr/share/ant/lib/ant-apache-resolver.jar:/usr/share/ant/lib/ant-antlr.jar:/usr/share/ant/lib/ant-junit4.jar:/usr/share/ant/lib/ant-testutil.jar:/usr/share/ant/lib/ant-javamail.jar:/usr/share/ant/lib/ant-apache-oro.jar:/usr/share/ant/lib/ant-junit.jar:/usr/share/ant/lib/ant-apache-xalan2.jar:/usr/share/ant/lib/ant-swing.jar:/usr/share/ant/lib/ant-jmf.jar:/usr/share/ant/lib/ant-apache-log4j.jar:/usr/share/ant/lib/ant-apache-regexp.jar:/usr/share/ant/lib/ant-commons-net.jar:/usr/share/ant/lib/ant-apache-bsf.jar:/usr/share/ant/lib/ant-apache-bcel.jar:/usr/share/ant/lib/ant.jar:/usr/share/ant/lib/ant-jsch.jar:/usr/share/ant/lib/ant-commons-logging.jar:/usr/share/ant/lib/ant-jdepend.jar:/usr/lib/jvm/jdk-8-oracle-arm32-vfp-hflt/lib/tools.jar
+Launcher Type: SUN_STANDARD
+
+Environment Variables:
+PATH=/home/pi/Projects/ent/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/local/games:/usr/games
+SHELL=/bin/bash
+DISPLAY=:0.0
+
+Signal Handlers:
+SIGSEGV: [libjvm.so+0x506638], sa_mask[0]=11111111011111111101111111111110, sa_flags=SA_RESTART|SA_SIGINFO
+SIGBUS: [libjvm.so+0x506638], sa_mask[0]=11111111011111111101111111111110, sa_flags=SA_RESTART|SA_SIGINFO
+SIGFPE: [libjvm.so+0x3fd4ec], sa_mask[0]=11111111011111111101111111111110, sa_flags=SA_RESTART|SA_SIGINFO
+SIGPIPE: [libjvm.so+0x3fd4ec], sa_mask[0]=11111111011111111101111111111110, sa_flags=SA_RESTART|SA_SIGINFO
+SIGXFSZ: [libjvm.so+0x3fd4ec], sa_mask[0]=11111111011111111101111111111110, sa_flags=SA_RESTART|SA_SIGINFO
+SIGILL: [libjvm.so+0x3fd4ec], sa_mask[0]=11111111011111111101111111111110, sa_flags=SA_RESTART|SA_SIGINFO
+SIGUSR1: SIG_DFL, sa_mask[0]=00000000000000000000000000000000, sa_flags=none
+SIGUSR2: [libjvm.so+0x3fd650], sa_mask[0]=00100000000000000000000000000000, sa_flags=SA_RESTART|SA_SIGINFO
+SIGHUP: [libjvm.so+0x3fda84], sa_mask[0]=11111111011111111101111111111110, sa_flags=SA_RESTART|SA_SIGINFO
+SIGINT: [libjvm.so+0x3fda84], sa_mask[0]=11111111011111111101111111111110, sa_flags=SA_RESTART|SA_SIGINFO
+SIGTERM: [libjvm.so+0x3fda84], sa_mask[0]=11111111011111111101111111111110, sa_flags=SA_RESTART|SA_SIGINFO
+SIGQUIT: [libjvm.so+0x3fda84], sa_mask[0]=11111111011111111101111111111110, sa_flags=SA_RESTART|SA_SIGINFO
+
+
+---------------  S Y S T E M  ---------------
+
+OS:PRETTY_NAME="Raspbian GNU/Linux 8 (jessie)"
+NAME="Raspbian GNU/Linux"
+VERSION_ID="8"
+VERSION="8 (jessie)"
+ID=raspbian
+ID_LIKE=debian
+HOME_URL="http://www.raspbian.org/"
+SUPPORT_URL="http://www.raspbian.org/RaspbianForums"
+BUG_REPORT_URL="http://www.raspbian.org/RaspbianBugs"
+
+uname:Linux 4.1.17-v7+ #838 SMP Tue Feb 9 13:15:09 GMT 2016 armv7l
+libc:glibc 2.19 NPTL 2.19 
+rlimit: STACK 8192k, CORE 0k, NPROC 6832, NOFILE 65536, AS infinity
+load average:6.15 3.80 2.25
+
+/proc/meminfo:
+MemTotal:         883180 kB
+MemFree:           12224 kB
+MemAvailable:      11500 kB
+Buffers:             568 kB
+Cached:             9760 kB
+SwapCached:         2264 kB
+Active:           416816 kB
+Inactive:         417076 kB
+Active(anon):     412480 kB
+Inactive(anon):   412548 kB
+Active(file):       4336 kB
+Inactive(file):     4528 kB
+Unevictable:           0 kB
+Mlocked:               0 kB
+SwapTotal:        102396 kB
+SwapFree:            936 kB
+Dirty:                52 kB
+Writeback:            36 kB
+AnonPages:        821740 kB
+Mapped:             8740 kB
+Shmem:              1192 kB
+Slab:              19540 kB
+SReclaimable:      10168 kB
+SUnreclaim:         9372 kB
+KernelStack:        1480 kB
+PageTables:         4240 kB
+NFS_Unstable:          0 kB
+Bounce:                0 kB
+WritebackTmp:          0 kB
+CommitLimit:      543984 kB
+Committed_AS:    1526408 kB
+VmallocTotal:    1171456 kB
+VmallocUsed:        4212 kB
+VmallocChunk:     942636 kB
+CmaTotal:           8192 kB
+CmaFree:               0 kB
+
+
+CPU:total 4 (ARMv7), vfp
+
+/proc/cpuinfo:
+processor	: 0
+model name	: ARMv7 Processor rev 5 (v7l)
+BogoMIPS	: 57.60
+Features	: half thumb fastmult vfp edsp neon vfpv3 tls vfpv4 idiva idivt vfpd32 lpae evtstrm 
+CPU implementer	: 0x41
+CPU architecture: 7
+CPU variant	: 0x0
+CPU part	: 0xc07
+CPU revision	: 5
+
+processor	: 1
+model name	: ARMv7 Processor rev 5 (v7l)
+BogoMIPS	: 57.60
+Features	: half thumb fastmult vfp edsp neon vfpv3 tls vfpv4 idiva idivt vfpd32 lpae evtstrm 
+CPU implementer	: 0x41
+CPU architecture: 7
+CPU variant	: 0x0
+CPU part	: 0xc07
+CPU revision	: 5
+
+processor	: 2
+model name	: ARMv7 Processor rev 5 (v7l)
+BogoMIPS	: 57.60
+Features	: half thumb fastmult vfp edsp neon vfpv3 tls vfpv4 idiva idivt vfpd32 lpae evtstrm 
+CPU implementer	: 0x41
+CPU architecture: 7
+CPU variant	: 0x0
+CPU part	: 0xc07
+CPU revision	: 5
+
+processor	: 3
+model name	: ARMv7 Processor rev 5 (v7l)
+BogoMIPS	: 57.60
+Features	: half thumb fastmult vfp edsp neon vfpv3 tls vfpv4 idiva idivt vfpd32 lpae evtstrm 
+CPU implementer	: 0x41
+CPU architecture: 7
+CPU variant	: 0x0
+CPU part	: 0xc07
+CPU revision	: 5
+
+Hardware	: BCM2709
+Revision	: a21041
+Serial		: 00000000d105ac5d
+
+
+Memory: 4k page, physical 883180k(12224k free), swap 102396k(936k free)
+
+vm_info: Java HotSpot(TM) Client VM (25.65-b01) for linux-arm-vfp-hflt JRE (1.8.0_65-b17), built on Oct  6 2015 16:19:04 by "java_re" with gcc 4.7.2 20120910 (prerelease)
+
+time: Mon Aug  8 13:30:31 2016
+elapsed time: 2178 seconds (0d 0h 36m 18s)
+

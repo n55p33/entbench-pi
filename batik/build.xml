@@ -1006,7 +1006,7 @@ JAVA=/usr/bin/java
   <target name="compile" depends="init, compile-prepare" unless="compile.done">
     <javac 
       fork="yes"
-      executable="/home/acanino/Projects/ent/bin/entc"
+      executable="/home/pi/Projects/ent/bin/entc"
            destdir="${dest}" deprecation="${deprecation}" 
            debug="${debug}" optimize="${optimize}" encoding="UTF-8">
       <compilerarg value="-XDignore.symbol.file"/>

@@ -1,0 +1,3 @@
+grant codeBase "file:/home/pi/entbench/batik" {
+    permission java.lang.RunetimePermission "getenv.ENT_BATTERY_LEVEL", "read";
+};

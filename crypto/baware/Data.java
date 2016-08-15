@@ -21,7 +21,7 @@ public class Data@mode<?->X> {
     System.out.format("Size: %d\n", this.length);
     if (this.length <= 1024) {
       return @mode<low>;
-    } else if (this.length <= 65536) {
+    } else if (this.length <= 4096) {
       return @mode<mid>;
     } else {
       return @mode<high>;

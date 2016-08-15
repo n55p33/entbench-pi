@@ -33,15 +33,26 @@ public class Util {
     public final static String TEST_DATA_3 =
             TEST_DATA_BASE + "random96.dat";
     
-    public final static String TEST_DATA_4 =
+		public final static String TEST_DATA_4 =
             TEST_DATA_BASE + "random1024.dat";
     
     public final static String TEST_DATA_5 =
-            TEST_DATA_BASE + "random65536.dat";
+            TEST_DATA_BASE + "random4096.dat";
     
     public final static String TEST_DATA_6 =
-            TEST_DATA_BASE + "random1048576.dat";
+            TEST_DATA_BASE + "random65536.dat";
+
+		public final static String TEST_SMALL =
+            TEST_DATA_BASE + "small.dat";
     
+    public final static String TEST_MEDIUM =
+            TEST_DATA_BASE + "medium.dat";
+    
+    public final static String TEST_LARGE =
+            TEST_DATA_BASE + "large.dat";
+
+
+        
     /**
      * Will collect the test data from FileCache.
      * @param name The file to collect.

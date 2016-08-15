@@ -41,6 +41,7 @@ import org.apache.batik.transcoder.image.JPEGTranscoder;
 import org.apache.batik.transcoder.image.PNGTranscoder;
 import org.apache.batik.util.ParsedURL;
 
+
 modes { low <: mid; mid <: high; }
 
 
